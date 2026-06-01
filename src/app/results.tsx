@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, Alert, Share, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, Alert, Share, StatusBar, Platform } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useQuizStore } from '../store/quizStore';
 import { CompassGraph } from '../components/CompassGraph';
@@ -51,6 +51,18 @@ const GET_QUADRANT_INFO = (x: number, y: number): QuadrantInfo => {
   }
 };
 
+const ViewShotComponent = React.forwardRef(({ children, style, ...props }: any, ref: any) => {
+  if (Platform.OS === 'web') {
+    return <View style={style}>{children}</View>;
+  }
+  return (
+    <ViewShot ref={ref} style={style} {...props}>
+      {children}
+    </ViewShot>
+  );
+});
+
+
 export default function ResultsScreen() {
   const router = useRouter();
   const { results, demographics, resetQuiz } = useQuizStore();
@@ -67,6 +79,14 @@ export default function ResultsScreen() {
   const quad = GET_QUADRANT_INFO(userX, userY);
 
   const handleShare = async () => {
+    if (Platform.OS === 'web') {
+      Alert.alert(
+        '공유 안내',
+        '웹 브라우저에서는 이미지 직접 캡처 기능이 네이티브 모듈 제약으로 제한됩니다. 모바일 기기의 스크린샷 캡처 기능을 이용하여 간편하게 소장 및 공유해 주세요!'
+      );
+      return;
+    }
+
     if (isSharing) return;
     setIsSharing(true);
     
@@ -112,7 +132,7 @@ export default function ResultsScreen() {
         </View>
 
         {/* ViewShot Target: We capture this entire elegant card for SNS sharing! */}
-        <ViewShot
+        <ViewShotComponent
           ref={viewShotRef}
           options={{ format: 'png', quality: 0.95 }}
           style={styles.captureCard}
@@ -175,7 +195,7 @@ export default function ResultsScreen() {
               ))}
             </View>
           </View>
-        </ViewShot>
+        </ViewShotComponent>
 
         {/* Buttons / Actions Block (Outside ViewShot so it's not captured) */}
         <View style={styles.actionsContainer}>
