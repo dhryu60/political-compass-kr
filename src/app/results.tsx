@@ -58,7 +58,7 @@ export default function ResultsScreen() {
   const { results, demographics, resetQuiz } = useQuizStore();
   const [showReferences, setShowReferences] = useState(true);
   const [isSharing, setIsSharing] = useState(false);
-  const viewShotRef = useRef<ViewShot>(null);
+  const viewShotRef = useRef<any>(null);
 
   // Fallback coords for debugging in dev mode if store got reset
   const userX = results?.x ?? -2.5;

@@ -78,7 +78,7 @@ export default function IntroScreen() {
 
           <View style={styles.featureItem}>
             <View style={[styles.featureIconBox, { backgroundColor: 'rgba(99, 102, 241, 0.1)' }]}>
-              <Ionicons name="award" color="#6366F1" size={20} />
+              <Ionicons name="ribbon" color="#6366F1" size={20} />
             </View>
             <View style={styles.featureContent}>
               <Text style={styles.featureTitle}>역대 정치인과 비교</Text>
