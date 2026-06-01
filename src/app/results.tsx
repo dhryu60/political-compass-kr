@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, Ale
 import { useRouter } from 'expo-router';
 import { useQuizStore } from '../store/quizStore';
 import { CompassGraph } from '../components/CompassGraph';
-import ViewShot from 'react-native-view-shot';
+import { ViewShotWrapper } from '../components/ViewShotWrapper';
 import * as Sharing from 'expo-sharing';
 import { Share2, RefreshCw, Layers, Sparkles, CheckCircle2, ChevronRight } from 'lucide-react-native';
 
@@ -51,16 +51,6 @@ const GET_QUADRANT_INFO = (x: number, y: number): QuadrantInfo => {
   }
 };
 
-const ViewShotComponent = React.forwardRef(({ children, style, ...props }: any, ref: any) => {
-  if (Platform.OS === 'web') {
-    return <View style={style}>{children}</View>;
-  }
-  return (
-    <ViewShot ref={ref} style={style} {...props}>
-      {children}
-    </ViewShot>
-  );
-});
 
 
 export default function ResultsScreen() {
@@ -132,7 +122,7 @@ export default function ResultsScreen() {
         </View>
 
         {/* ViewShot Target: We capture this entire elegant card for SNS sharing! */}
-        <ViewShotComponent
+        <ViewShotWrapper
           ref={viewShotRef}
           options={{ format: 'png', quality: 0.95 }}
           style={styles.captureCard}
@@ -195,7 +185,7 @@ export default function ResultsScreen() {
               ))}
             </View>
           </View>
-        </ViewShotComponent>
+        </ViewShotWrapper>
 
         {/* Buttons / Actions Block (Outside ViewShot so it's not captured) */}
         <View style={styles.actionsContainer}>
