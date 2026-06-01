@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "name": "폴리티컬 캠퍼스 KR",
+    "slug": "political-compass-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "scheme": "politicalcompasskr",
+    "newArchEnabled": true,
+    "plugins": [
+      "expo-router"
+    ],
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}
