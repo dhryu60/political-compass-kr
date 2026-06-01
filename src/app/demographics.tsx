@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useQuizStore } from '../store/quizStore';
-import { ArrowRight, ShieldCheck, UserCheck } from 'lucide-react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const GENDERS = [
   { key: 'male', label: '남성' },
@@ -107,7 +107,7 @@ export default function DemographicsScreen() {
 
         {/* Legal Anonymity Alert */}
         <View style={styles.anonymityInfo}>
-          <ShieldCheck color="#10B981" size={18} style={styles.infoIcon} />
+          <Ionicons name="shield-checkmark" color="#10B981" size={18} style={styles.infoIcon} />
           <View style={styles.infoContent}>
             <Text style={styles.infoTitle}>익명성 100% 보장</Text>
             <Text style={styles.infoText}>
@@ -127,7 +127,7 @@ export default function DemographicsScreen() {
           onPress={handleStartQuiz}
         >
           <Text style={styles.submitButtonText}>정치 성향 테스트 시작</Text>
-          <ArrowRight color={isFormValid ? '#FFFFFF' : '#475569'} size={18} style={styles.btnIcon} />
+          <Ionicons name="arrow-forward" color={isFormValid ? '#FFFFFF' : '#475569'} size={18} style={styles.btnIcon} />
         </TouchableOpacity>
 
       </ScrollView>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView, StatusBar, ImageBackground } from 'react-native';
 import { useRouter } from 'expo-router';
-import { Compass, Sparkles, Flame, ShieldAlert, Award } from 'lucide-react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 export default function IntroScreen() {
   const router = useRouter();
@@ -22,14 +22,14 @@ export default function IntroScreen() {
         
         {/* Header Branding */}
         <View style={styles.header}>
-          <Sparkles color="#6366F1" size={18} />
+          <Ionicons name="sparkles" color="#6366F1" size={18} />
           <Text style={styles.headerSubtitle}>내 정치 성향 내비게이터</Text>
         </View>
 
         {/* Hero Section */}
         <View style={styles.heroSection}>
           <View style={styles.iconContainer}>
-            <Compass color="#FF4A6B" size={48} strokeWidth={2} />
+            <Ionicons name="compass" color="#FF4A6B" size={48} />
           </View>
           
           <Text style={styles.title}>
@@ -60,7 +60,7 @@ export default function IntroScreen() {
         <View style={styles.featureGrid}>
           <View style={styles.featureItem}>
             <View style={[styles.featureIconBox, { backgroundColor: 'rgba(239, 68, 68, 0.1)' }]}>
-              <Flame color="#EF4444" size={20} />
+              <Ionicons name="flame" color="#EF4444" size={20} />
             </View>
             <View style={styles.featureContent}>
               <Text style={styles.featureTitle}>대한민국 현지화 질문</Text>
@@ -70,7 +70,7 @@ export default function IntroScreen() {
 
           <View style={styles.featureItem}>
             <View style={[styles.featureIconBox, { backgroundColor: 'rgba(99, 102, 241, 0.1)' }]}>
-              <Award color="#6366F1" size={20} />
+              <Ionicons name="award" color="#6366F1" size={20} />
             </View>
             <View style={styles.featureContent}>
               <Text style={styles.featureTitle}>역대 정치인과 비교</Text>
@@ -80,7 +80,7 @@ export default function IntroScreen() {
 
           <View style={styles.featureItem}>
             <View style={[styles.featureIconBox, { backgroundColor: 'rgba(16, 185, 129, 0.1)' }]}>
-              <ShieldAlert color="#10B981" size={20} />
+              <Ionicons name="shield-half" color="#10B981" size={20} />
             </View>
             <View style={styles.featureContent}>
               <Text style={styles.featureTitle}>익명성 및 민감정보 보호</Text>

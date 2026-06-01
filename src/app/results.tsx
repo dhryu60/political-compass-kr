@@ -5,7 +5,7 @@ import { useQuizStore } from '../store/quizStore';
 import { CompassGraph } from '../components/CompassGraph';
 import { ViewShotWrapper } from '../components/ViewShotWrapper';
 import * as Sharing from 'expo-sharing';
-import { Share2, RefreshCw, Layers, Sparkles, CheckCircle2, ChevronRight } from 'lucide-react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 interface QuadrantInfo {
   title: string;
@@ -179,7 +179,7 @@ export default function ResultsScreen() {
             <View style={styles.keywordsGrid}>
               {quad.keywords.map((kw, i) => (
                 <View key={i} style={styles.keywordPill}>
-                  <CheckCircle2 color={quad.color} size={11} style={{ marginRight: 4 }} />
+                  <Ionicons name="checkmark-circle" color={quad.color} size={11} style={{ marginRight: 4 }} />
                   <Text style={styles.keywordText}>{kw}</Text>
                 </View>
               ))}
@@ -195,7 +195,7 @@ export default function ResultsScreen() {
             activeOpacity={0.7}
             onPress={() => setShowReferences(prev => !prev)}
           >
-            <Layers color="#6366F1" size={16} style={{ marginRight: 6 }} />
+            <Ionicons name="layers" color="#6366F1" size={16} style={{ marginRight: 6 }} />
             <Text style={styles.toggleBtnText}>
               {showReferences ? "한국 정치인 비교군 감추기" : "한국 정치인 비교군 표시하기"}
             </Text>
@@ -208,7 +208,7 @@ export default function ResultsScreen() {
             onPress={handleShare}
             disabled={isSharing}
           >
-            <Share2 color="#FFFFFF" size={18} style={{ marginRight: 8 }} />
+            <Ionicons name="share-social" color="#FFFFFF" size={18} style={{ marginRight: 8 }} />
             <Text style={styles.btnText}>
               {isSharing ? "이미지 캡처 중..." : "결과 이미지 SNS 공유"}
             </Text>
@@ -220,7 +220,7 @@ export default function ResultsScreen() {
             activeOpacity={0.8}
             onPress={handleRestart}
           >
-            <RefreshCw color="#94A3B8" size={16} style={{ marginRight: 8 }} />
+            <Ionicons name="refresh" color="#94A3B8" size={16} style={{ marginRight: 8 }} />
             <Text style={styles.restartBtnText}>처음부터 다시 하기</Text>
           </TouchableOpacity>
         </View>

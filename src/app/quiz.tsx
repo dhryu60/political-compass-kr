@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, ScrollView, Ani
 import { useRouter } from 'expo-router';
 import { useQuizStore } from '../store/quizStore';
 import { QUESTIONS } from '../data/questions';
-import { ChevronLeft, ChevronRight, HelpCircle } from 'lucide-react-native';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const LIKERT_OPTIONS = [
   { value: -2, label: '매우 반대', color: '#EF4444', bgColor: 'rgba(239, 68, 68, 0.08)', borderColor: '#EF4444' },
@@ -78,7 +78,7 @@ export default function QuizScreen() {
         {/* Question Card */}
         <View style={styles.card}>
           <View style={styles.helpIconBox}>
-            <HelpCircle color="#6366F1" size={24} />
+            <Ionicons name="help-circle" color="#6366F1" size={24} />
           </View>
           <Text style={styles.questionText}>{currentQuestion.text}</Text>
           <Text style={styles.axisLabel}>
@@ -129,7 +129,7 @@ export default function QuizScreen() {
             activeOpacity={0.7}
             onPress={prevQuestion}
           >
-            <ChevronLeft color={currentQuestionIndex === 0 ? '#334155' : '#94A3B8'} size={18} />
+            <Ionicons name="chevron-back" color={currentQuestionIndex === 0 ? '#334155' : '#94A3B8'} size={18} />
             <Text style={[styles.navBtnText, currentQuestionIndex === 0 && styles.navBtnTextDisabled]}>이전</Text>
           </TouchableOpacity>
 
@@ -149,7 +149,7 @@ export default function QuizScreen() {
               onPress={nextQuestion}
             >
               <Text style={[styles.navBtnText, !isAnswered && styles.navBtnTextDisabled]}>다음</Text>
-              <ChevronRight color={!isAnswered ? '#334155' : '#94A3B8'} size={18} />
+              <Ionicons name="chevron-forward" color={!isAnswered ? '#334155' : '#94A3B8'} size={18} />
             </TouchableOpacity>
           )}
         </View>
