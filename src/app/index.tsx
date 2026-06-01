@@ -6,11 +6,19 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 export default function IntroScreen() {
   const router = useRouter();
   const [participantCount, setParticipantCount] = useState(14820);
+  const [countText, setCountText] = useState("14,820");
 
   // Mock a live counter to create viral MZ-generation excitement!
   useEffect(() => {
+    // Sync to local locale on mount
+    setCountText(participantCount.toLocaleString());
+    
     const interval = setInterval(() => {
-      setParticipantCount(prev => prev + Math.floor(Math.random() * 3) + 1);
+      setParticipantCount(prev => {
+        const next = prev + Math.floor(Math.random() * 3) + 1;
+        setCountText(next.toLocaleString());
+        return next;
+      });
     }, 4000);
     return () => clearInterval(interval);
   }, []);
@@ -52,7 +60,7 @@ export default function IntroScreen() {
             <View style={styles.pulseRing} />
           </View>
           <Text style={styles.statsText}>
-            현재 <Text style={styles.statsHighlight}>{participantCount.toLocaleString()}</Text>명의 유권자가 진단을 마쳤습니다.
+            현재 <Text style={styles.statsHighlight}>{countText}</Text>명의 유권자가 진단을 마쳤습니다.
           </Text>
         </View>
 
