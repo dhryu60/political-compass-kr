@@ -65,6 +65,7 @@ export default function DemographicsScreen() {
                   key={g.key}
                   style={[
                     styles.card,
+                    g.key === 'other' ? styles.genderCardFull : styles.genderCardHalf,
                     isSelected && styles.cardSelected
                   ]}
                   activeOpacity={0.7}
@@ -178,6 +179,7 @@ const styles = StyleSheet.create({
   },
   genderGrid: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     gap: 10,
   },
   ageGrid: {
@@ -186,7 +188,6 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   card: {
-    flex: 1,
     backgroundColor: '#0F1322',
     borderWidth: 1.5,
     borderColor: '#1E293B',
@@ -195,9 +196,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  genderCardHalf: {
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: '47%',
+  },
+  genderCardFull: {
+    width: '100%',
+  },
   ageCard: {
-    flex: 0,
-    width: '48%', // Show 2 items per row
+    flexGrow: 1,
+    flexShrink: 1,
+    flexBasis: '47%',
   },
   cardSelected: {
     backgroundColor: 'rgba(255, 74, 107, 0.08)',
